@@ -26,9 +26,6 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-    @message.post_id = @post_id
-
-
 
     respond_to do |format|
       if @message.save
@@ -73,6 +70,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:title, :description, :user_id, :post_id).merge(user_id: current_user.id, post_id: @post_id)
+      params.require(:message).permit(:title, :description, :user_id, :post_id)
     end
 end

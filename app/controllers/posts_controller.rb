@@ -7,11 +7,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = current_user.posts
+
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @messages = Message.all
   end
 
   # GET /posts/new
@@ -28,6 +30,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @messages.post_id = @post_id
 
     respond_to do |format|
       if @post.save

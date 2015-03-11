@@ -26,6 +26,26 @@
 		<div class="col-sm-12 col-md-8 col-lg-8" style="text-align:center;">
 			<h1>Comments:</h1>
 			<hr>
+				<p id="notice"><%= notice %></p>
+    		<% @messages.each do |message| %>
+      			<tr>
+        			<td><%= message.title %></td>
+        			<td><%= message.description %></td>
+        			<td><%= message.user_id %></td>
+        			<td><%= message.post_id %></td>
+        			<td><%= link_to 'Show', message %></td>
+        		<td><%= link_to 'Edit', edit_message_path(message) %></td>
+        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', new_message_path %>
+
+
 		</div>
 	</div>
 </div>
