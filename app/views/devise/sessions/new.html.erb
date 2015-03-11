@@ -20,7 +20,8 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", class: 'form-control' %>
+    <%= f.submit "Log in", class: 'btn btn-primary btn-lg' %>
+    <%= link_to "Sign up", new_registration_path(resource_name), class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
 

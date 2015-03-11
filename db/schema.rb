@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311010302) do
+ActiveRecord::Schema.define(version: 20150311201036) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "comment_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
 
   create_table "controllers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +39,15 @@ ActiveRecord::Schema.define(version: 20150311010302) do
 
   add_index "controllers", ["email"], name: "index_controllers_on_email", unique: true
   add_index "controllers", ["reset_password_token"], name: "index_controllers_on_reset_password_token", unique: true
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
