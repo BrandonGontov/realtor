@@ -1,0 +1,22 @@
+Signed in as <%= current_user.email %>. This is not you?
+<%# navigation styled for Bootstrap 3.0 %>
+<nav class="navbar navbar-default navbar-fixed-top" id="nav_bar">
+  <div class="container-fluid">
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand" >
+        <li style="list-style:none;"><%= link_to_unless_current("Realtor", root_path) %></li>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav navbar-right">
+        <%= render 'layouts/navbar' %>
+      </ul>
+    </div>
+  </div>
+</nav>

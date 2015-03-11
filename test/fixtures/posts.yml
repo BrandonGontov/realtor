@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  price: 1
+  bedrooms: 1
+  area: MyString
+
+two:
+  title: MyString
+  price: 1
+  bedrooms: 1
+  area: MyString
