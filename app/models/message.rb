@@ -1,4 +1,4 @@
 class Message < ActiveRecord::Base
-	belongs_to :posts
-	belongs_to :users
+	belongs_to :user
+	belongs_to :post
 end

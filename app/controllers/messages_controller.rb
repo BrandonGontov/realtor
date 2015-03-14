@@ -1,10 +1,13 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_post
+  before_action :authenticate_user!
 
   # GET /messages
   # GET /messages.json
   def index
     @messages = Message.all
+
   end
 
   # GET /messages/1
@@ -26,10 +29,11 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
+    @message.post_id = @post.id
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to @post, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
@@ -57,7 +61,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Message was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,7 +71,9 @@ class MessagesController < ApplicationController
     def set_message
       @message = Message.find(params[:id])
     end
-
+    def set_post
+      @post = Post.find(params[:post_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
       params.require(:message).permit(:title, :description, :user_id, :post_id)
