@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def show
     @messages = Message.all
     @message = Message.find_by(post_id: params[:id])
+    @post_comments = @post.messages.all
   end
 
   # GET /posts/new
